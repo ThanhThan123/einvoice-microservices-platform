@@ -126,7 +126,7 @@ sequenceDiagram
 
 2. Navigate to the project directory:
     ```bash
-    cd tutorial-nest-microservices
+    cd einvoice-microservices-platform
     ```
 
 3. Install dependencies:
