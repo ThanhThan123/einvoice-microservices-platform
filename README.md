@@ -142,197 +142,43 @@ sequenceDiagram
 ## Monorepo Structure
 
 Einvoice-App/
-├── .husky/
-├── .nx/
 ├── apps/
-│   ├── authorizer/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   └── modules/
-│   │       │       ├── authorizer/
-│   │       │       │   ├── controllers/
-│   │       │       │   │   ├── authorizer-grpc.controller.ts
-│   │       │       │   │   └── authorizer.controller.ts
-│   │       │       │   ├── services/
-│   │       │       │   │   └── authorizer.service.ts
-│   │       │       │   └── authorizer.module.ts
-│   │       │       └── keycloak/
-│   │       │           ├── controllers/
-│   │       │           │   └── keycloak.controller.ts
-│   │       │           ├── services/
-│   │       │           │   └── keycloak-http.service.ts
-│   │       │           └── keycloak.module.ts
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   ├── bff/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   ├── modules/
-│   │       │   │   ├── authorizer/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── authorizer.controller.ts
-│   │       │   │   │   └── authorizer.module.ts
-│   │       │   │   ├── heal/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── heal.controller.ts
-│   │       │   │   │   ├── services/
-│   │       │   │   │   │   └── heal.services.ts
-│   │       │   │   │   └── heal.module.ts
-│   │       │   │   ├── invoice/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── invoice.controller.ts
-│   │       │   │   │   └── invoice.module.ts
-│   │       │   │   ├── product/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── product.controller.ts
-│   │       │   │   │   └── product.module.ts
-│   │       │   │   ├── user/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── user.controller.ts
-│   │       │   │   │   └── user.module.ts
-│   │       │   │   └── webhook/
-│   │       │   │       ├── controllers/
-│   │       │   │       │   └── webhook.controller.ts
-│   │       │   │       ├── services/
-│   │       │   │       │   └── webhook.services.ts
-│   │       │   │       └── webhook.module.ts
-│   │       │   └── app.module.ts
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   ├── einvoice-e2e/
-│   │   └── src/
-│   │       ├── invoice/
-│   │       │   └── invoice.spec.ts
-│   │       ├── suppost/
-│   │       │   ├── auth.helper.ts
-│   │       │   ├── global-setup.ts
-│   │       │   ├── global-teardown.ts
-│   │       │   └── test-setup.ts
-│   │       └── main.ts
-│   │
-│   ├── invoice/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   ├── modules/
-│   │       │   │   ├── invoice/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── invoice.controller.ts
-│   │       │   │   │   ├── mappers/
-│   │       │   │   │   │   └── index.ts
-│   │       │   │   │   ├── repository/
-│   │       │   │   │   │   └── invoice.repository.ts
-│   │       │   │   │   ├── sagas/
-│   │       │   │   │   │   └── invoice-send-saga-steps.service.ts
-│   │       │   │   │   ├── services/
-│   │       │   │   │   │   └── invoice.service.ts
-│   │       │   │   │   └── invoice.module.ts
-│   │       │   │   └── payment/
-│   │       │   │       ├── services/
-│   │       │   │       │   ├── payment.service.ts
-│   │       │   │       │   └── stripe.service.ts
-│   │       │   │       └── payment.module.ts
-│   │       │   └── app.module.ts
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   ├── mail/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   ├── modules/
-│   │       │   │   ├── mail/
-│   │       │   │   │   ├── controllers/
-│   │       │   │   │   │   └── mail.controller.ts
-│   │       │   │   │   ├── services/
-│   │       │   │   │   │   └── mail-invoice.service.ts
-│   │       │   │   │   └── mail.module.ts
-│   │       │   │   └── mail-template/
-│   │       │   │       ├── services/
-│   │       │   │       │   └── mail-template.service.ts
-│   │       │   │       ├── template/
-│   │       │   │       │   ├── invoice.ejs
-│   │       │   │       │   └── layout.ejs
-│   │       │   │       └── mail-template.module.ts
-│   │       │   └── app.module.ts
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   ├── media/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   └── modules/
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   ├── pdf-generator/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   └── modules/
-│   │       ├── configuration/
-│   │       └── main.ts
-│   │
-│   ├── product/
-│   │   └── src/
-│   │       ├── app/
-│   │       │   └── modules/
-│   │       ├── configuration/
-│   │       │   └── index.ts
-│   │       └── main.ts
-│   │
-│   └── user-access/
-│       └── src/
-│           ├── app/
-│           │   └── modules/
-│           ├── configuration/
-│           │   └── index.ts
-│           └── main.ts
-│
-├── docker/
-│   ├── docker_data/
-│   │   ├── grafana_data/
-│   │   ├── kafka_data/
-│   │   │   └── bitnami_data/
-│   │   ├── keycloak_data/
-│   │   ├── mongodb_data/
-│   │   ├── pgadmin_data/
-│   │   ├── postgres_data/
-│   │   ├── redis_data/
-│   │   └── redis-insight_data/
-│   ├── prometheus.yml
-│   ├── promtail-config.yaml
-│   └── tempo.yaml
+│   ├── authorizer/       # Auth + Keycloak integration
+│   ├── bff/              # API gateway / BFF
+│   ├── invoice/          # Invoice domain service
+│   ├── mail/             # Mail service + templates
+│   ├── media/            # Media/file service
+│   ├── pdf-generator/    # PDF generation service
+│   ├── product/          # Product service
+│   ├── user-access/      # User & permission service
+│   └── einvoice-e2e/     # End-to-end tests
 │
 ├── libs/
-│   ├── configuration/
-│   ├── constants/
-│   ├── decorators/
-│   ├── entities/
-│   ├── guards/
-│   ├── interceptors/
-│   ├── interfaces/
-│   ├── kafka/
-│   ├── middlewares/
-│   ├── observability/
-│   ├── saga-orchestration/
-│   ├── schemas/
-│   └── utils/
+│   ├── configuration/    # Shared config
+│   ├── constants/        # Shared constants
+│   ├── decorators/       # Custom decorators
+│   ├── entities/         # Shared entities
+│   ├── guards/           # Auth/permission guards
+│   ├── interceptors/     # Shared interceptors
+│   ├── interfaces/       # Shared interfaces / contracts
+│   ├── kafka/            # Kafka integration
+│   ├── middlewares/      # Shared middlewares
+│   ├── observability/    # Logging / tracing / metrics
+│   ├── saga-orchestration/ # Saga orchestration
+│   ├── schemas/          # Shared schemas
+│   └── utils/            # Utilities
 │
-├── tools/
-│   └── seed.js
+├── docker/               # Local infra & observability config
+├── tools/                # Scripts / seeders
+├── .husky/
+├── .nx/
 ├── .env
-├── .commitlint.config.js
 ├── docker-compose.provider.yaml
 ├── eslint.config.mjs
 ├── jest.config.ts
 ├── nx.json
-├── README.md
-└── package.json
+├── package.json
+└── README.md
 
 ## 📜 Documentation
 
