@@ -141,35 +141,35 @@ sequenceDiagram
 
 ## Monorepo Structure
 
+
+```text
 Einvoice-App/
 ├── apps/
-│   ├── authorizer/       # Auth + Keycloak integration
-│   ├── bff/              # API gateway / BFF
-│   ├── invoice/          # Invoice domain service
-│   ├── mail/             # Mail service + templates
-│   ├── media/            # Media/file service
-│   ├── pdf-generator/    # PDF generation service
-│   ├── product/          # Product service
-│   ├── user-access/      # User & permission service
-│   └── einvoice-e2e/     # End-to-end tests
-│
+│   ├── authorizer/
+│   ├── bff/
+│   ├── invoice/
+│   ├── mail/
+│   ├── media/
+│   ├── pdf-generator/
+│   ├── product/
+│   ├── user-access/
+│   └── einvoice-e2e/
 ├── libs/
-│   ├── configuration/    # Shared config
-│   ├── constants/        # Shared constants
-│   ├── decorators/       # Custom decorators
-│   ├── entities/         # Shared entities
-│   ├── guards/           # Auth/permission guards
-│   ├── interceptors/     # Shared interceptors
-│   ├── interfaces/       # Shared interfaces / contracts
-│   ├── kafka/            # Kafka integration
-│   ├── middlewares/      # Shared middlewares
-│   ├── observability/    # Logging / tracing / metrics
-│   ├── saga-orchestration/ # Saga orchestration
-│   ├── schemas/          # Shared schemas
-│   └── utils/            # Utilities
-│
-├── docker/               # Local infra & observability config
-├── tools/                # Scripts / seeders
+│   ├── configuration/
+│   ├── constants/
+│   ├── decorators/
+│   ├── entities/
+│   ├── guards/
+│   ├── interceptors/
+│   ├── interfaces/
+│   ├── kafka/
+│   ├── middlewares/
+│   ├── observability/
+│   ├── saga-orchestration/
+│   ├── schemas/
+│   └── utils/
+├── docker/
+├── tools/
 ├── .husky/
 ├── .nx/
 ├── .env
@@ -179,6 +179,7 @@ Einvoice-App/
 ├── nx.json
 ├── package.json
 └── README.md
+```
 
 ## 📜 Documentation
 
